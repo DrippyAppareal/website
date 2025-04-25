@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Drippy Appareal - Home</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="hero">
+    <div class="overlay">
+      <div class="top-bar">
+        <h1 class="brand">Drippy Appareal</h1>
+      </div>
+      <h3 class="slogan">Drip your style.</h3>
+      <a href="#productscard" class="hero-button">View Products</a>
+    </div>
+
+    <nav class="main-nav">
+      <a href="index.html">Home</a>
+      <a href="#productscard">Catalogue</a>
+      <a href="Cart page.html">
+        <img src="shopping-cart.png" width="50" height="50" alt="Cart">
+      </a>
+      <div class="search-container">
+        <input type="text" id="searchInput" placeholder="Search for products..." autocomplete="off" />
+        <div id="suggestions" class="suggestions-box"></div>
+      </div>      
+    </nav>
+  </header>
+
+  <section id="home" class="home">
+    <h2>Welcome to Drippy Appareal</h2>
+    <p>Where fashion meets simplicity. Discover our latest minimalist streetwear.</p>
+  </section>
+
+  <section class="video-section">
+    <div class="video-wrapper">
+      <video class="promo-video" autoplay muted loop playsinline>
+        <source src="video2.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <video class="promo-video" autoplay muted loop playsinline>
+        <source src="video.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <video class="promo-video" autoplay muted loop playsinline>
+        <source src="video3.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </div>
+  </section>
+  
+
+  <section id="productscard" class="productscard">
+<h1>Our Drip Collection</h1>
+<div class="productcard-grid">
+
+<div class="product-cardcard">
+  <a href="hoodiescategory.html">
+<img src="drippy hoodie.jpeg" alt="Drippy Graphic Hoodie" />
+<h3>Drippy Graphic Hoodie</h3>
+</a>
+</div>
+
+
+<div class="product-cardcard">
+<img src="drippy sweater.jpeg" alt="Drippy Sweater" />
+<h3>Sweaters</h3>
+</div>
+
+
+<div class="product-cardcard">
+<img src="beanie models.jpeg" alt="Drippy Beanie" />
+<h3>Drippy Beanie</h3>
+</div>
+
+
+<div class="product-cardcard">
+<img src="drippy tshirt.jpeg" alt="Drippy T-shirt" />
+<h3>T-shirts</h3>
+</div>
+</section>
+
+<section class="contact-section">
+    <h2>Contact Us</h2>
+    <form class="contact-form" action="#" method="POST">
+      <label for="name">Name</label>
+      <input type="text" id="name" name="name" placeholder="Your name" required>
+  
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" placeholder="Your email" required>
+  
+      <label for="message">Message</label>
+      <textarea id="message" name="message" rows="5" placeholder="Your message..." required></textarea>
+  
+      <button type="submit">Send Message</button>
+    </form>
+  </section>  
+
+  <footer>
+    &copy; 2025 Drippy Appareal. All rights reserved.
+    <div class="social-icons">
+      <a href="https://www.tiktok.com/@drippy.appareal" target="_blank" aria-label="TikTok">
+        <img src="tiktok-icon.png" alt="TikTok" width="30" height="30">
+      </a>
+      <a href="https://www.instagram.com/drippy.appareal" target="_blank" aria-label="Instagram">
+        <img src="instagram-icon.jpeg" alt="Instagram" width="30" height="30">
+      </a>
+    </div>
+    
+  </footer>
+
+  <script>
+    // Sample product names (replace with actual product list)
+    const productNames = [
+      "Black Hoodie",
+      "Size Selection",
+      "White T-Shirt",
+      "Drippy Beanie",
+      "Oversized Joggers",
+      "Streetwear Jacket",
+      "Graphic Tee",
+      "Minimalist Crewneck"
+    ];
+  
+    const searchInput = document.getElementById("searchInput");
+    const suggestionsBox = document.getElementById("suggestions");
+  
+    searchInput.addEventListener("input", function () {
+      const query = this.value.toLowerCase().trim();
+      suggestionsBox.innerHTML = "";
+  
+      if (query === "") return;
+  
+      const filtered = productNames.filter(product => 
+        product.toLowerCase().includes(query)
+      );
+  
+      filtered.forEach(product => {
+        const div = document.createElement("div");
+        div.textContent = product;
+        div.onclick = () => {
+          searchInput.value = product;
+          suggestionsBox.innerHTML = "";
+          window.location.href = `product-page.html?product=${encodeURIComponent(product)}`;
+        };
+        suggestionsBox.appendChild(div);
+      });
+    });
+  
+    // Optional: clear suggestions when clicking outside
+    document.addEventListener("click", (e) => {
+      if (!e.target.closest(".search-container")) {
+        suggestionsBox.innerHTML = "";
+      }
+    });
+  </script>  
+
+</body>
+</html>
